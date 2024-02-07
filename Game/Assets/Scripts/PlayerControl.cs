@@ -13,9 +13,12 @@ public class PlayerControl : MonoBehaviour
     public bool isGrounded;
     public bool nextLevel;
     Animator anim;
+    ScoreManager scoreManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        scoreManager=GameObject.Find("GameManager").GetComponent<ScoreManager>();
         rb= GetComponent<Rigidbody>();
         anim=GetComponent<Animator>();
     }
@@ -67,7 +70,9 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.CompareTag("Finish"))
         {
             nextLevel = true;
-            print("Winner");
+            scoreManager.winner();
+            Time.timeScale = 0;
+
         }
     }
     private void OnCollisionEnter(Collision collision)

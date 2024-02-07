@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI highScore;
     public int scoreX = 0;
     public int livesX = 3;
+    
+    public GameObject winnerCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,5 +48,9 @@ public class ScoreManager : MonoBehaviour
         {
             print("Game Over");
         }
+    }
+    public void winner()
+    {
+        winnerCanvas.SetActive(true);
     }
 }
